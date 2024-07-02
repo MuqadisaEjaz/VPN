@@ -3,6 +3,7 @@ import 'package:starxvpn_lightmode/themes/custome_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:starxvpn_lightmode/view/Onboarding/onboarding1.dart';
 import 'package:starxvpn_lightmode/widgets/my_button.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -66,16 +67,26 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                         SizedBox(height: 20.h),
                         Image.asset(
                           'assets/StarX Vpn Light Mode/Swipe/Swipe.png',
-                          height: 20.h,
-                          width: 40.w,
+                          height: 28.h,
+                          width: 42.w,
                           fit: BoxFit.cover,
                         ),
                         SizedBox(height: 30.h), // Responsive height
-                        Image.asset(
-                          'assets/StarX Vpn Light Mode/Swipe/Button 1.png',
-                          height: 50.h,
-                          width: 50.w,
-                          fit: BoxFit.cover,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    OnboardingScreenOne(),
+                              ),
+                            );
+                          },
+                          child: Image.asset(
+                            'assets/StarX Vpn Light Mode/Swipe/Button 1.png',
+                            height: 50.h,
+                            width: 50.w,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                         SizedBox(height: 20.h),
                       ],
