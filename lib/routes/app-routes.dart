@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:starxvpn_lightmode/view/Login/login_screen.dart';
 import 'package:starxvpn_lightmode/view/Onboarding/onboarding_screen.dart';
 import 'package:starxvpn_lightmode/view/Onboarding/onboarding4.dart';
-// import 'package:starxvpn_lightmode/view/Onboarding/onboarding1.dart';
-// import 'package:starxvpn_lightmode/view/Onboarding/onboarding2.dart';
-// import 'package:starxvpn_lightmode/view/Onboarding/onboarding3.dart';
+import 'package:starxvpn_lightmode/view/SignUp/signup_screen.dart';
 
 class AppRoutes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -12,13 +11,10 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => OnboardingScreenFour());
       case '/onboarding':
         return MaterialPageRoute(builder: (_) => OnboardingScreen());
-      // case '/onboarding-one':
-      //   return MaterialPageRoute(builder: (_) => OnboardingScreenOne());
-      // case '/onboarding-two':
-      //   return MaterialPageRoute(builder: (_) => OnboardingScreenTwo());
-      // case '/onboarding-three':
-      //   return MaterialPageRoute(builder: (_) => OnboardingScreenThree());
-      // Add more routes as needed
+      case '/login':
+        return MaterialPageRoute(builder: (_) => LoginScreen());
+      case '/signup':
+        return MaterialPageRoute(builder: (_) => SignupScreen());
 
       default:
         return MaterialPageRoute(

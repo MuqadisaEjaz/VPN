@@ -69,6 +69,9 @@ flutter:
     - assets/StarX Vpn Light Mode/Illustration/
     - assets/StarX Vpn Light Mode/Swipe/
     - assets/StarX Vpn Light Mode/Map Illustration/
+    - assets/StarX Vpn Light Mode/Eye logo/
+    - assets/StarX Vpn Light Mode/Back Button/
+    - assets/StarX Vpn Light Mode/Loading/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

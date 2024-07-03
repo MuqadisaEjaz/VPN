@@ -103,7 +103,7 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                       MyButton(
                         text: 'Start Free Trial',
                         onTap: () {
-                          print('Start Free Trial pressed');
+                          Navigator.pushReplacementNamed(context, '/signup');
                         },
                         isPrimary: true,
                         width: double.infinity,
@@ -112,7 +112,7 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                       MyButton(
                         text: 'Sign In',
                         onTap: () {
-                          print('Sign In pressed');
+                          Navigator.pushReplacementNamed(context, '/login');
                         },
                         isPrimary: false,
                         width: double.infinity,
