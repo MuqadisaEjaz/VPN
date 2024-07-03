@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:starxvpn_lightmode/view/Onboarding/onboarding.dart'; // Replace with your actual screen file
+import 'package:starxvpn_lightmode/view/Onboarding/onboarding_screen.dart'; // Replace with your actual screen file
 
 class OnboardingScreenFour extends StatefulWidget {
   @override
@@ -12,7 +12,7 @@ class _OnboardingScreenFourState extends State<OnboardingScreenFour> {
   void initState() {
     super.initState();
     // Delay for 5 seconds
-    Timer(Duration(seconds: 5), () {
+    Timer(Duration(seconds: 3), () {
       // Navigate to next screen
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
