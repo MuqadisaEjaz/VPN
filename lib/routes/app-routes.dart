@@ -6,6 +6,7 @@ import 'package:starxvpn_lightmode/view/ResetPassword/newpassword_screen.dart';
 import 'package:starxvpn_lightmode/view/ResetPassword/reset_password.dart';
 import 'package:starxvpn_lightmode/view/SignUp/signup_screen.dart';
 import 'package:starxvpn_lightmode/view/ResetPassword/otp_screen.dart';
+import 'package:starxvpn_lightmode/view/dashboard/dashboard_screen.dart';
 
 class AppRoutes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -24,6 +25,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => OtpScreen());
       case '/setnewpassword':
         return MaterialPageRoute(builder: (_) => NewPasswordScreen());
+      case '/dashboard':
+        return MaterialPageRoute(builder: (_) => DashboardScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

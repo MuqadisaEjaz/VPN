@@ -73,6 +73,12 @@ flutter:
     - assets/StarX Vpn Light Mode/Back Button/
     - assets/StarX Vpn Light Mode/Loading/
     - assets/StarX Vpn Light Mode/Clock Circle/
+    - assets/StarX Vpn Light Mode/Notification/
+    - assets/StarX Vpn Light Mode/Globe Vector/
+    - assets/StarX Vpn Light Mode/Vpn Off and On Button/
+    - assets/StarX Vpn Light Mode/Location Flag Icons/
+    - assets/StarX Vpn Light Mode/Drawer Button/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
