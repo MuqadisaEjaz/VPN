@@ -67,6 +67,7 @@ class MyButton extends StatelessWidget {
   final bool isPrimary;
   final double width;
   final bool isLoading;
+  final bool isEnabled;
 
   const MyButton({
     super.key,
@@ -77,6 +78,7 @@ class MyButton extends StatelessWidget {
     required this.width,
     this.isPrimary = true,
     this.isLoading = false,
+    this.isEnabled = true,
   });
 
   @override
@@ -87,7 +89,9 @@ class MyButton extends StatelessWidget {
         width: width.w,
         height: height ?? 40.h,
         decoration: BoxDecoration(
-          color: isPrimary ? AppColor.blueColor : AppColor.whiteColor,
+          color: isPrimary && isEnabled
+              ? AppColor.blueColor
+              : AppColor.disabledColor,
           border: isPrimary
               ? null
               : Border.all(color: AppColor.blueColor, width: 2),

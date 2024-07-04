@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:starxvpn_lightmode/view/Login/login_screen.dart';
 import 'package:starxvpn_lightmode/view/Onboarding/onboarding_screen.dart';
 import 'package:starxvpn_lightmode/view/Onboarding/onboarding4.dart';
+import 'package:starxvpn_lightmode/view/ResetPassword/newpassword_screen.dart';
+import 'package:starxvpn_lightmode/view/ResetPassword/reset_password.dart';
 import 'package:starxvpn_lightmode/view/SignUp/signup_screen.dart';
+import 'package:starxvpn_lightmode/view/ResetPassword/otp_screen.dart';
 
 class AppRoutes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -15,7 +18,12 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case '/signup':
         return MaterialPageRoute(builder: (_) => SignupScreen());
-
+      case '/resetpassword':
+        return MaterialPageRoute(builder: (_) => ResetPasswordScreen());
+      case '/otpverification':
+        return MaterialPageRoute(builder: (_) => OtpScreen());
+      case '/setnewpassword':
+        return MaterialPageRoute(builder: (_) => NewPasswordScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

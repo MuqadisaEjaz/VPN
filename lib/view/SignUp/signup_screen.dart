@@ -193,13 +193,6 @@ import 'package:starxvpn_lightmode/widgets/custom_text_fields.dart';
 import 'package:starxvpn_lightmode/widgets/my_button.dart';
 import 'package:starxvpn_lightmode/providers/signup_provder.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-import 'package:starxvpn_lightmode/widgets/custom_text_fields.dart';
-import 'package:starxvpn_lightmode/widgets/my_button.dart';
-import 'package:starxvpn_lightmode/providers/signup_provder.dart';
-
 class SignupScreen extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();

@@ -284,7 +284,8 @@ class LoginScreen extends StatelessWidget {
                               Center(
                                 child: GestureDetector(
                                   onTap: () {
-                                    print('Forgot Password pressed');
+                                    Navigator.pushReplacementNamed(
+                                        context, '/resetpassword');
                                   },
                                   child: Text(
                                     'Forgot Password?',

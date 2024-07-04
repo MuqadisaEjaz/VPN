@@ -9,4 +9,5 @@ class AppColor {
   static const textColor = Color(0xff8391A1);
   static const greyColor = Color(0xffEEEEEE);
   static const purpleColor = Color(0xFF515DB4);
+  static const disabledColor = Color(0xFFDBD6CE);
 }
