@@ -59,6 +59,9 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isNotificationListEmpty =
+        recentNotifications.isEmpty && yesterdayNotifications.isEmpty;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -81,44 +84,58 @@ class NotificationScreen extends StatelessWidget {
           },
         ),
       ),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Recent',
-              style: TextStyle(
-                fontFamily: 'SatoshiMedium',
-                fontSize: 16,
+      body: isNotificationListEmpty
+          ? Center(
+              child: Text(
+                'You\'re all caught up',
+                style: TextStyle(
+                  fontFamily: 'SatoshiMedium',
+                  fontSize: 18,
+                ),
               ),
+            )
+          : ListView(
+              children: [
+                if (recentNotifications.isNotEmpty) ...[
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      'Recent',
+                      style: TextStyle(
+                        fontFamily: 'SatoshiMedium',
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  ...recentNotifications.map((notification) {
+                    return CustomNotificationBox(
+                      profileImage: notification['profileImage']!,
+                      message: notification['message']!,
+                      time: notification['time']!,
+                    );
+                  }).toList(),
+                ],
+                if (yesterdayNotifications.isNotEmpty) ...[
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      'Yesterday',
+                      style: TextStyle(
+                        fontFamily: 'SatoshiMedium',
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  ...yesterdayNotifications.map((notification) {
+                    return CustomNotificationBox(
+                      profileImage: notification['profileImage']!,
+                      message: notification['message']!,
+                      time: notification['time']!,
+                    );
+                  }).toList(),
+                ],
+              ],
             ),
-          ),
-          ...recentNotifications.map((notification) {
-            return CustomNotificationBox(
-              profileImage: notification['profileImage']!,
-              message: notification['message']!,
-              time: notification['time']!,
-            );
-          }).toList(),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Yesterday',
-              style: TextStyle(
-                fontFamily: 'SatoshiMedium',
-                fontSize: 16,
-              ),
-            ),
-          ),
-          ...yesterdayNotifications.map((notification) {
-            return CustomNotificationBox(
-              profileImage: notification['profileImage']!,
-              message: notification['message']!,
-              time: notification['time']!,
-            );
-          }).toList(),
-        ],
-      ),
     );
   }
 }
