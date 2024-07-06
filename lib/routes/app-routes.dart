@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:starxvpn_lightmode/view/Login/login_screen.dart';
+import 'package:starxvpn_lightmode/view/Notifications/notifications_screen.dart';
 import 'package:starxvpn_lightmode/view/Onboarding/onboarding_screen.dart';
 import 'package:starxvpn_lightmode/view/Onboarding/onboarding4.dart';
 import 'package:starxvpn_lightmode/view/ResetPassword/newpassword_screen.dart';
@@ -27,6 +28,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => NewPasswordScreen());
       case '/dashboard':
         return MaterialPageRoute(builder: (_) => DashboardScreen());
+      case '/notificationlist':
+        return MaterialPageRoute(builder: (_) => NotificationScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

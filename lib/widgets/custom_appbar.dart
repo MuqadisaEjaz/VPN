@@ -30,7 +30,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             width: 20.w,
           ),
           onPressed: () {
-            // Handle notification action
+            Navigator.pushReplacementNamed(context, '/notificationlist');
           },
         ),
         IconButton(
