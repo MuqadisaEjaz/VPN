@@ -13,7 +13,6 @@ class NewPasswordScreen extends StatefulWidget {
 }
 
 class NewPasswordScreenState extends State<NewPasswordScreen> {
-  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<NewPasswordProvider>(

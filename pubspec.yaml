@@ -78,6 +78,10 @@ flutter:
     - assets/StarX Vpn Light Mode/Vpn Off and On Button/
     - assets/StarX Vpn Light Mode/Location Flag Icons/
     - assets/StarX Vpn Light Mode/Drawer Button/
+    - assets/StarX Vpn Light Mode/Close icon/
+    - assets/StarX Vpn Light Mode/Error/
+    - assets/StarX Vpn Light Mode/Check Circle green icon/
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
