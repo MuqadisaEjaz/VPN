@@ -19,7 +19,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           width: 70.w,
         ),
         onPressed: () {
-          // Handle sidebar navigation
+          Scaffold.of(context).openDrawer();
         },
       ),
       actions: [

@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   provider: ^5.0.0
   flutter_screenutil: ^5.0.0+2
+  shared_preferences: ^2.0.7
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -82,6 +83,17 @@ flutter:
     - assets/StarX Vpn Light Mode/Error/
     - assets/StarX Vpn Light Mode/Check Circle green icon/
     - assets/StarX Vpn Light Mode/Profile/
+    - assets/StarX Vpn Light Mode/Location Flag Icons/
+    - assets/StarX Vpn Light Mode/Drawer Button/
+    - assets/StarX Vpn Light Mode/Apple, Facebook, Google logo/
+    - assets/StarX Vpn Light Mode/Close icon/
+    - assets/StarX Vpn Light Mode/Down Bar Line/
+    - assets/StarX Vpn Light Mode/Drop Down/
+    - assets/StarX Vpn Light Mode/Search Icon/
+    - assets/StarX Vpn Light Mode/Location Icon/
+    - assets/StarX Vpn Light Mode/Radio Buttons/
+    - assets/StarX Vpn Light Mode/Profile/
+    - assets/StarX Vpn Light Mode/Settings icons/
 
 
 

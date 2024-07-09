@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:starxvpn_lightmode/view/Onboarding/onboarding_screen.dart'; // Replace with your actual screen file
+import 'package:starxvpn_lightmode/view/Onboarding/onboarding_screen.dart';
+import 'package:starxvpn_lightmode/view/dashboard/dashboard_screen.dart'; // Replace with your actual screen file
 
 class OnboardingScreenFour extends StatefulWidget {
   @override
@@ -12,12 +13,12 @@ class _OnboardingScreenFourState extends State<OnboardingScreenFour> {
   void initState() {
     super.initState();
     // Delay for 5 seconds
-    Timer(Duration(seconds: 3), () {
+    Timer(Duration(seconds: 5), () {
       // Navigate to next screen
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (BuildContext context) =>
-              OnboardingScreen(), // Replace with your actual screen
+              DashboardScreen(), // Replace with your actual screen
         ),
       );
     });

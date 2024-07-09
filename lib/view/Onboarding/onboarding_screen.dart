@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -22,11 +23,54 @@ class OnboardingScreen extends StatefulWidget {
 class OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _startAutoSlide();
+  }
+
+  void _startAutoSlide() {
+    _timer = Timer.periodic(Duration(seconds: 2), (timer) {
+      if (_currentPage < 3) {
+        _currentPage++;
+      } else {
+        _currentPage = 0;
+      }
+      _pageController.animateToPage(
+        _currentPage,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeIn,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Image.asset(
+              'assets/StarX Vpn Light Mode/Close icon/Icon.png',
+              height: 30.h,
+              width: 30.w,
+            ),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/dashboard');
+            },
+          ),
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
         body: Stack(
           children: [
             Positioned(
@@ -58,8 +102,6 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                             'Keep your online activity private, even in public.',
                         swipeImagePath:
                             'assets/StarX Vpn Light Mode/Swipe/Swipe.png',
-                        buttonImagePath:
-                            'assets/StarX Vpn Light Mode/Swipe/Button 1.png',
                       ),
                       OnboardingPage(
                         imagePath:
@@ -67,8 +109,6 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                         text: 'Mask your IP address and avoid being tracked.',
                         swipeImagePath:
                             'assets/StarX Vpn Light Mode/Swipe/Swipe 2.png',
-                        buttonImagePath:
-                            'assets/StarX Vpn Light Mode/Swipe/Button 2.png',
                       ),
                       OnboardingPage(
                         imagePath:
@@ -77,18 +117,14 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                             'Enjoy unrestricted access worldwide-from anywhere.',
                         swipeImagePath:
                             'assets/StarX Vpn Light Mode/Swipe/Swipe 3.png',
-                        buttonImagePath:
-                            'assets/StarX Vpn Light Mode/Swipe/Button 3.png',
                       ),
                       OnboardingPage(
                         imagePath:
                             'assets/StarX Vpn Light Mode/Illustration/Illustration 4.png',
                         text:
-                            'Start protecting yourself with a 7-day free trial',
+                            'Start protecting yourself with a 7-day free trial.',
                         swipeImagePath:
                             'assets/StarX Vpn Light Mode/Swipe/Swipe 4.png',
-                        buttonImagePath:
-                            'assets/StarX Vpn Light Mode/Swipe/Button 4.png',
                       ),
                     ],
                   ),
@@ -101,23 +137,117 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                     children: [
                       SizedBox(height: 20.h),
                       MyButton(
-                        text: 'Start Free Trial',
+                        text: 'Sign In',
                         onTap: () {
-                          Navigator.pushReplacementNamed(context, '/signup');
+                          Navigator.pushReplacementNamed(context, '/login');
                         },
                         isPrimary: true,
                         width: double.infinity,
                       ),
                       SizedBox(height: 10.h),
-                      MyButton(
-                        text: 'Sign In',
-                        onTap: () {
-                          Navigator.pushReplacementNamed(context, '/login');
-                        },
-                        isPrimary: false,
-                        width: double.infinity,
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(child: Divider()),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                                child: Text(
+                                  'or sign up with',
+                                  style: TextStyle(
+                                    fontFamily: 'Satoshi',
+                                    fontSize: 14.sp,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              Expanded(child: Divider()),
+                            ],
+                          ),
+                          SizedBox(height: 10.h),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                      color: Colors.grey, width: 2.0),
+                                ),
+                                child: CircleAvatar(
+                                  radius: 20.h,
+                                  backgroundColor: Colors.white,
+                                  child: Image.asset(
+                                    'assets/StarX Vpn Light Mode/Apple, Facebook, Google logo/Apple.png',
+                                    height: 30.h,
+                                    width: 30.w,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 20.w),
+                              Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                      color: Colors.grey, width: 2.0),
+                                ),
+                                child: CircleAvatar(
+                                  radius: 20.h,
+                                  backgroundColor: Colors.white,
+                                  child: Image.asset(
+                                    'assets/StarX Vpn Light Mode/Apple, Facebook, Google logo/Facebook.png',
+                                    height: 30.h,
+                                    width: 30.w,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 20.w),
+                              Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                      color: Colors.grey, width: 2.0),
+                                ),
+                                child: CircleAvatar(
+                                  radius: 20.h,
+                                  backgroundColor: Colors.white,
+                                  child: Image.asset(
+                                    'assets/StarX Vpn Light Mode/Apple, Facebook, Google logo/Google.png',
+                                    height: 30.h,
+                                    width: 30.w,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20.h),
+                          Text(
+                            "Haven't signed up yet?",
+                            style: TextStyle(
+                              fontFamily: 'Satoshi',
+                              fontSize: 14.sp,
+                              color: Colors.black,
+                            ),
+                          ),
+                          SizedBox(height: 5.h),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushReplacementNamed(
+                                  context, '/signup');
+                            },
+                            child: Text(
+                              'Create an account',
+                              style: TextStyle(
+                                fontFamily: 'Satoshi',
+                                fontSize: 14.sp,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 10.h),
+                      SizedBox(height: 20.h),
                     ],
                   ),
                 ),
