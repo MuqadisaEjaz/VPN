@@ -30,15 +30,50 @@ class _LocationScreenState extends State<LocationScreen> {
         "imagePath":
             'assets/StarX Vpn Light Mode/Location Flag Icons/united-kingdom.png',
         "countryName": 'United Kingdom',
-        "cities": ['City A', 'City B', 'City C'],
+        "cities": ['Bedford', 'Congleton'],
         "capital": 'London',
       },
       {
         "imagePath":
-            'assets/StarX Vpn Light Mode/Location Flag Icons/united-kingdom.png',
-        "countryName": 'Country 2',
+            'assets/StarX Vpn Light Mode/Location Flag Icons/canada.png',
+        "countryName": 'Canada',
         "cities": ['City X', 'City Y', 'City Z'],
-        "capital": 'Capital X',
+        "capital": 'Ottawa',
+      },
+      {
+        "imagePath":
+            'assets/StarX Vpn Light Mode/Location Flag Icons/germany.png',
+        "countryName": 'Germany',
+        "cities": ['City X', 'City Y', 'City Z'],
+        "capital": 'Berlin',
+      },
+      {
+        "imagePath":
+            'assets/StarX Vpn Light Mode/Location Flag Icons/thailand.png',
+        "countryName": 'Thailand',
+        "cities": ['City X', 'City Y', 'City Z'],
+        "capital": 'Bangkok',
+      },
+      {
+        "imagePath":
+            'assets/StarX Vpn Light Mode/Location Flag Icons/canada.png',
+        "countryName": 'Canada',
+        "cities": ['City X', 'City Y', 'City Z'],
+        "capital": 'Victoria',
+      },
+      {
+        "imagePath":
+            'assets/StarX Vpn Light Mode/Location Flag Icons/iceland.png',
+        "countryName": 'Iceland',
+        "cities": ['City X', 'City Y', 'City Z'],
+        "capital": 'Reykjavk',
+      },
+      {
+        "imagePath":
+            'assets/StarX Vpn Light Mode/Location Flag Icons/viet-nam.png',
+        "countryName": 'Vietnam',
+        "cities": ['City X', 'City Y', 'City Z'],
+        "capital": 'Ho Chi Minh',
       },
     ],
     [

@@ -2,7 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:starxvpn_lightmode/const/app_colors.dart';
 
-class CustomDrawer extends StatelessWidget {
+class CustomDrawer extends StatefulWidget {
+  @override
+  _CustomDrawerState createState() => _CustomDrawerState();
+}
+
+class _CustomDrawerState extends State<CustomDrawer> {
+  bool _isAppAppearanceExpanded = false;
+  String _selectedTheme = 'Light'; // Default theme set to 'Light'
+  bool _isKillSwitchOn = false;
+  bool _isAutoConnectOn = false;
+  bool _isRotatingIpOn = false;
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -24,6 +35,7 @@ class CustomDrawer extends StatelessWidget {
               automaticallyImplyLeading: false,
               centerTitle: true,
             ),
+            SizedBox(height: 30.h),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 10.h),
               child: Row(
@@ -75,9 +87,10 @@ class CustomDrawer extends StatelessWidget {
               imagePath:
                   'assets/StarX Vpn Light Mode/Settings icons/My account.png',
               text: 'My Account',
-              trailing: Icon(
-                Icons.chevron_right,
-                size: 20.sp,
+              trailing: Image.asset(
+                'assets/StarX Vpn Light Mode/Settings icons/Chevron.png',
+                height: 10.h,
+                width: 10.w,
               ),
               onTap: () {
                 // Handle My Account navigation
@@ -88,9 +101,10 @@ class CustomDrawer extends StatelessWidget {
               imagePath:
                   'assets/StarX Vpn Light Mode/Settings icons/Protocols.png',
               text: 'Protocols',
-              trailing: Icon(
-                Icons.chevron_right,
-                size: 20.sp,
+              trailing: Image.asset(
+                'assets/StarX Vpn Light Mode/Settings icons/Chevron.png',
+                height: 10.h,
+                width: 10.w,
               ),
               onTap: () {
                 // Handle Protocols navigation
@@ -102,12 +116,16 @@ class CustomDrawer extends StatelessWidget {
                   'assets/StarX Vpn Light Mode/Settings icons/Kill switch.png',
               text: 'Kill Switch',
               trailing: Image.asset(
-                'assets/StarX Vpn Light Mode/Settings icons/Switch off.png',
+                _isKillSwitchOn
+                    ? 'assets/StarX Vpn Light Mode/Settings icons/Switch on.png'
+                    : 'assets/StarX Vpn Light Mode/Settings icons/Switch off.png',
                 height: 30.h,
                 width: 30.w,
               ),
               onTap: () {
-                // Handle Kill Switch navigation
+                setState(() {
+                  _isKillSwitchOn = !_isKillSwitchOn;
+                });
               },
             ),
             Divider(),
@@ -116,12 +134,16 @@ class CustomDrawer extends StatelessWidget {
                   'assets/StarX Vpn Light Mode/Settings icons/wifi-connected-02.png',
               text: 'Auto-connect',
               trailing: Image.asset(
-                'assets/StarX Vpn Light Mode/Settings icons/Switch off.png',
+                _isAutoConnectOn
+                    ? 'assets/StarX Vpn Light Mode/Settings icons/Switch on.png'
+                    : 'assets/StarX Vpn Light Mode/Settings icons/Switch off.png',
                 height: 30.h,
                 width: 30.w,
               ),
               onTap: () {
-                // Handle Auto-connect navigation
+                setState(() {
+                  _isAutoConnectOn = !_isAutoConnectOn;
+                });
               },
             ),
             Divider(),
@@ -130,35 +152,56 @@ class CustomDrawer extends StatelessWidget {
                   'assets/StarX Vpn Light Mode/Settings icons/Rotating IP.png',
               text: 'Rotating Ip',
               trailing: Image.asset(
-                'assets/StarX Vpn Light Mode/Settings icons/Switch off.png',
+                _isRotatingIpOn
+                    ? 'assets/StarX Vpn Light Mode/Settings icons/Switch on.png'
+                    : 'assets/StarX Vpn Light Mode/Settings icons/Switch off.png',
                 height: 30.h,
                 width: 30.w,
               ),
               onTap: () {
-                // Handle App Appearance navigation
+                setState(() {
+                  _isRotatingIpOn = !_isRotatingIpOn;
+                });
               },
             ),
             Divider(),
             _buildDrawerItem(
               imagePath:
                   'assets/StarX Vpn Light Mode/Settings icons/App Appearence.png',
-              text: 'App Appearence',
-              trailing: Icon(
-                Icons.chevron_right,
-                size: 20.sp,
+              text: 'App Appearance',
+              trailing: Image.asset(
+                _isAppAppearanceExpanded
+                    ? 'assets/StarX Vpn Light Mode/Settings icons/Chevron down.png'
+                    : 'assets/StarX Vpn Light Mode/Settings icons/Chevron.png',
+                height: 10.h,
+                width: 10.w,
               ),
               onTap: () {
-                // Handle App Appearance navigation
+                setState(() {
+                  _isAppAppearanceExpanded = !_isAppAppearanceExpanded;
+                });
               },
             ),
+            if (_isAppAppearanceExpanded) ...[
+              _buildThemeOption(
+                  'Light theme',
+                  'assets/StarX Vpn Light Mode/Check Circle/Editing Unselected Dark.png',
+                  'assets/StarX Vpn Light Mode/Check Circle/Editing Selected Dark.png'),
+              Divider(indent: 20.w, endIndent: 20.w),
+              _buildThemeOption(
+                  'Dark theme',
+                  'assets/StarX Vpn Light Mode/Check Circle/Editing Unselected Dark.png',
+                  'assets/StarX Vpn Light Mode/Check Circle/Editing Selected Dark.png'),
+            ],
             Divider(),
             _buildDrawerItem(
               imagePath:
                   'assets/StarX Vpn Light Mode/Settings icons/White list.png',
               text: 'White List',
-              trailing: Icon(
-                Icons.chevron_right,
-                size: 20.sp,
+              trailing: Image.asset(
+                'assets/StarX Vpn Light Mode/Settings icons/Chevron.png',
+                height: 10.h,
+                width: 10.w,
               ),
               onTap: () {
                 // Handle White List navigation
@@ -169,9 +212,10 @@ class CustomDrawer extends StatelessWidget {
               imagePath:
                   'assets/StarX Vpn Light Mode/Settings icons/security-check.png',
               text: 'Security & Privacy',
-              trailing: Icon(
-                Icons.chevron_right,
-                size: 20.sp,
+              trailing: Image.asset(
+                'assets/StarX Vpn Light Mode/Settings icons/Chevron.png',
+                height: 10.h,
+                width: 10.w,
               ),
               onTap: () {
                 // Handle Security & Privacy navigation
@@ -182,9 +226,10 @@ class CustomDrawer extends StatelessWidget {
               imagePath:
                   'assets/StarX Vpn Light Mode/Settings icons/customer-support.png',
               text: 'Help & Support',
-              trailing: Icon(
-                Icons.chevron_right,
-                size: 20.sp,
+              trailing: Image.asset(
+                'assets/StarX Vpn Light Mode/Settings icons/Chevron.png',
+                height: 10.h,
+                width: 10.w,
               ),
               onTap: () {
                 // Handle Help & Support navigation
@@ -194,9 +239,10 @@ class CustomDrawer extends StatelessWidget {
             _buildDrawerItem(
               imagePath: 'assets/StarX Vpn Light Mode/Settings icons/Info.png',
               text: 'About us',
-              trailing: Icon(
-                Icons.chevron_right,
-                size: 20.sp,
+              trailing: Image.asset(
+                'assets/StarX Vpn Light Mode/Settings icons/Chevron.png',
+                height: 10.h,
+                width: 10.w,
               ),
               onTap: () {
                 // Handle Help & Support navigation
@@ -207,9 +253,10 @@ class CustomDrawer extends StatelessWidget {
               imagePath:
                   'assets/StarX Vpn Light Mode/Settings icons/logout-02.png',
               text: 'Sign Out',
-              trailing: Icon(
-                Icons.chevron_right,
-                size: 20.sp,
+              trailing: Image.asset(
+                'assets/StarX Vpn Light Mode/Settings icons/Chevron.png',
+                height: 10.h,
+                width: 10.w,
               ),
               onTap: () {
                 // Handle Sign Out navigation
@@ -243,6 +290,33 @@ class CustomDrawer extends StatelessWidget {
       ),
       trailing: trailing,
       onTap: onTap,
+    );
+  }
+
+  Widget _buildThemeOption(
+      String theme, String unselectedIconPath, String selectedIconPath) {
+    bool isSelected = _selectedTheme == theme;
+    return ListTile(
+      title: Center(
+        child: Text(
+          theme,
+          style: TextStyle(
+            fontFamily: 'Satoshi',
+            fontSize: 15.sp,
+            color: Color.fromARGB(255, 102, 101, 101),
+          ),
+        ),
+      ),
+      trailing: Image.asset(
+        isSelected ? selectedIconPath : unselectedIconPath,
+        height: 40.h,
+        width: 40.w,
+      ),
+      onTap: () {
+        setState(() {
+          _selectedTheme = theme;
+        });
+      },
     );
   }
 }
