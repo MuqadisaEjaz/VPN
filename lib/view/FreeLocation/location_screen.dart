@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:starxvpn_lightmode/const/app_colors.dart';
 import 'package:starxvpn_lightmode/widgets/custom_appbar.dart';
 import 'package:starxvpn_lightmode/widgets/custom_location_item.dart';
 import 'package:starxvpn_lightmode/widgets/custom_drawer.dart';
@@ -110,6 +111,41 @@ class _LocationScreenState extends State<LocationScreen> {
     ],
   ];
 
+  Map<String, dynamic> getCategoryImage(String category) {
+    switch (category) {
+      case "List":
+        return {
+          'imagepath': 'assets/StarX Vpn Light Mode/Down Bar Line/List.png',
+          'width': 30.w
+        };
+      case "Best":
+        return {
+          'imagepath': 'assets/StarX Vpn Light Mode/Down Bar Line/Best.png',
+          'width': 35.w
+        };
+      case "Favourite":
+        return {
+          'imagepath': 'assets/StarX Vpn Light Mode/Down Bar Line/Favorite.png',
+          'width': 75.w
+        };
+      case "Recent":
+        return {
+          'imagepath': 'assets/StarX Vpn Light Mode/Down Bar Line/Recent.png',
+          'width': 55.w
+        };
+      case "Premium":
+        return {
+          'imagepath': 'assets/StarX Vpn Light Mode/Down Bar Line/Premium.png',
+          'width': 70.w
+        };
+      default:
+        return {
+          'imagepath': 'assets/StarX Vpn Light Mode/Down Bar Line/List.png',
+          'width': 20.w
+        };
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,8 +160,8 @@ class _LocationScreenState extends State<LocationScreen> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.0),
-                  border: Border.all(color: Colors.grey.shade300),
+                  borderRadius: BorderRadius.circular(25.0),
+                  border: Border(top: BorderSide(color: Colors.grey.shade300)),
                 ),
                 child: Column(
                   children: [
@@ -133,17 +169,16 @@ class _LocationScreenState extends State<LocationScreen> {
                         height: 10.h), // Space between the line and the text
                     Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(12.0),
-                          topRight: Radius.circular(12.0),
-                        ),
                         border: Border(
-                          bottom: BorderSide(color: Colors.grey.shade300),
+                          top: BorderSide(
+                            color: Colors.grey.shade300,
+                            width: 3.0,
+                          ),
                         ),
                       ),
                       padding: EdgeInsets.symmetric(vertical: 10.h),
                       child: Text(
-                        'Location',
+                        'Locations',
                         textAlign: TextAlign.center, // Center align text
                         style: TextStyle(
                           fontFamily: 'Satoshi',
@@ -159,6 +194,8 @@ class _LocationScreenState extends State<LocationScreen> {
                       children: categories.asMap().entries.map((entry) {
                         int index = entry.key;
                         String category = entry.value;
+                        Map<String, dynamic> categoryImage =
+                            getCategoryImage(category);
                         return GestureDetector(
                           onTap: () {
                             setState(() {
@@ -174,27 +211,32 @@ class _LocationScreenState extends State<LocationScreen> {
                                   fontSize: 16.sp,
                                   //fontWeight: FontWeight.bold,
                                   color: selectedIndex == index
-                                      ? Colors.blue
+                                      ? AppColor.blueColor
                                       : Colors.black,
                                 ),
                               ),
+                              SizedBox(height: 5.h),
+                              if (selectedIndex ==
+                                  index) // Only show the image if the category is active
+                                Image.asset(
+                                  categoryImage['imagepath'],
+                                  width: categoryImage['width'],
+                                ),
                             ],
                           ),
                         );
                       }).toList(),
                     ),
-                    SizedBox(height: 20.h),
+                    SizedBox(height: 30.h),
                     Row(
                       children: [
                         Expanded(
                           child: Container(
                             padding: EdgeInsets.symmetric(horizontal: 20.w),
+                            margin: EdgeInsets.symmetric(horizontal: 15.w),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.0),
-                              border: Border.all(
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                              ),
-                            ),
+                                borderRadius: BorderRadius.circular(10.0),
+                                color: AppColor.greyColor),
                             child: Row(
                               children: [
                                 Image.asset(
@@ -206,7 +248,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                 Expanded(
                                   child: TextField(
                                     decoration: InputDecoration(
-                                      hintText: 'Search...',
+                                      hintText: 'Search',
                                       border: InputBorder.none,
                                     ),
                                   ),
@@ -219,14 +261,18 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                     SizedBox(height: 20.h),
                     Container(
-                      padding: EdgeInsets.all(
-                          10.w), // Add padding inside the container
+                      margin: EdgeInsets.symmetric(horizontal: 15.w),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12.0),
                         border: Border.all(color: Colors.grey.shade300),
                       ),
                       child: Column(
-                        children: locationData[selectedIndex].map((location) {
+                        children: locationData[selectedIndex]
+                            .asMap()
+                            .entries
+                            .map((entry) {
+                          int index = entry.key;
+                          Map<String, dynamic> location = entry.value;
                           return Column(
                             children: [
                               CustomLocationItem(
@@ -236,13 +282,15 @@ class _LocationScreenState extends State<LocationScreen> {
                                 cities: location["cities"],
                                 captial: location["capital"],
                               ),
-                              Divider(
-                                thickness: 3, // Adjust thickness for boldness
-                                height:
-                                    5.h, // Adjust height of the divider line
-                                color: Color.fromARGB(255, 224, 224,
-                                    224), // Optionally set the color
-                              ), // Divider between items
+                              if (index <
+                                  locationData[selectedIndex].length - 1)
+                                Divider(
+                                  thickness: 3, // Adjust thickness for boldness
+                                  height:
+                                      5.h, // Adjust height of the divider line
+                                  color: Color.fromARGB(255, 224, 224,
+                                      224), // Optionally set the color
+                                ), // Divider between items
                             ],
                           );
                         }).toList(),

@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:starxvpn_lightmode/view/Onboarding/onboarding_screen.dart';
 import 'package:starxvpn_lightmode/view/dashboard/dashboard_screen.dart'; // Replace with your actual screen file
 
 class OnboardingScreenFour extends StatefulWidget {

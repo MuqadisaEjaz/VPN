@@ -3,7 +3,6 @@ import 'package:starxvpn_lightmode/view/FreeLocation/location_screen.dart';
 import 'package:starxvpn_lightmode/view/Login/login_screen.dart';
 import 'package:starxvpn_lightmode/view/Notifications/notifications_screen.dart';
 import 'package:starxvpn_lightmode/view/Onboarding/onboarding_screen.dart';
-import 'package:starxvpn_lightmode/view/Onboarding/onboarding4.dart';
 import 'package:starxvpn_lightmode/view/ResetPassword/newpassword_screen.dart';
 import 'package:starxvpn_lightmode/view/ResetPassword/reset_password.dart';
 import 'package:starxvpn_lightmode/view/SignUp/signup_screen.dart';

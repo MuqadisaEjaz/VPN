@@ -13,4 +13,5 @@ class AppColor {
   static const alertboxColor = Color(0xffe5e5e5);
   static const successColor = Color(0xffDAF8E6);
   static const errorColor = Color(0xffCB1C14);
+  static const searchBarColor = Color(0xfff6f7fa);
 }
