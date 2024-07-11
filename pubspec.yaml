@@ -96,6 +96,8 @@ flutter:
     - assets/StarX Vpn Light Mode/Settings icons/
     - assets/StarX Vpn Light Mode/Down Bar Line/
     - assets/StarX Vpn Light Mode/Check Circle/
+    - assets/StarX Vpn Light Mode/Edit pencil Vector/
+    - assets/StarX Vpn Light Mode/Copy icon/
 
 
 
@@ -123,6 +125,10 @@ flutter:
       fonts:
         - asset: assets/fonts/Satoshi-Bold.otf
           weight: 500
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+
 
   #   - family: Trajan Pro
   #     fonts:

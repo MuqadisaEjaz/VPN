@@ -93,7 +93,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 width: 10.w,
               ),
               onTap: () {
-                // Handle My Account navigation
+                Navigator.pushReplacementNamed(context, '/myaccount');
               },
             ),
             Divider(),
@@ -106,9 +106,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 height: 10.h,
                 width: 10.w,
               ),
-              onTap: () {
-                // Handle Protocols navigation
-              },
+              onTap: () {},
             ),
             Divider(),
             _buildDrawerItem(
