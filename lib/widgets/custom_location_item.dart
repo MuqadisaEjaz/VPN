@@ -6,6 +6,7 @@ class CustomLocationItem extends StatefulWidget {
   final String countryName;
   final String captial;
   final List<String> cities;
+  final bool isPremium; // New property
 
   const CustomLocationItem({
     Key? key,
@@ -13,6 +14,7 @@ class CustomLocationItem extends StatefulWidget {
     required this.countryName,
     required this.cities,
     required this.captial,
+    this.isPremium = false, // Default to false
   }) : super(key: key);
 
   @override
@@ -21,6 +23,7 @@ class CustomLocationItem extends StatefulWidget {
 
 class _CustomLocationItemState extends State<CustomLocationItem> {
   bool isExpanded = false;
+  int selectedIndex = -1; // Track selected index, -1 means no selection
 
   @override
   Widget build(BuildContext context) {
@@ -60,15 +63,28 @@ class _CustomLocationItemState extends State<CustomLocationItem> {
               ),
             ],
           ),
-          trailing: IconButton(
-            onPressed: () {
-              setState(() {
-                isExpanded = !isExpanded;
-              });
-            },
-            icon: Icon(isExpanded
-                ? Icons.keyboard_arrow_up
-                : Icons.keyboard_arrow_down),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (widget.isPremium)
+                Image.asset(
+                  isExpanded
+                      ? 'assets/StarX Vpn Light Mode/lock and unlock icon/square-lock-02.png'
+                      : 'assets/StarX Vpn Light Mode/lock and unlock icon/square-lock-02.png',
+                  height: 20.h,
+                  width: 20.w,
+                ),
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    isExpanded = !isExpanded;
+                  });
+                },
+                icon: Icon(isExpanded
+                    ? Icons.keyboard_arrow_up
+                    : Icons.keyboard_arrow_down),
+              ),
+            ],
           ),
         ),
         if (isExpanded)
@@ -97,7 +113,7 @@ class _CustomLocationItemState extends State<CustomLocationItem> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     leading: Image.asset(
-                      'assets/StarX Vpn Light Mode/Location Icon/location-04.png', // Location icon
+                      'assets/StarX Vpn Light Mode/Location Icon/location-04.png',
                       height: 30.h,
                       width: 30.w,
                     ),
@@ -108,10 +124,23 @@ class _CustomLocationItemState extends State<CustomLocationItem> {
                         fontSize: 14.sp,
                       ),
                     ),
-                    trailing: Image.asset(
-                      'assets/StarX Vpn Light Mode/Radio Buttons/Radio off Button.png', // Radio off button icon
-                      height: 20.h,
-                      width: 20.w,
+                    trailing: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          if (selectedIndex == index) {
+                            selectedIndex = -1; // Deselect if already selected
+                          } else {
+                            selectedIndex = index; // Select new item
+                          }
+                        });
+                      },
+                      child: Image.asset(
+                        selectedIndex == index
+                            ? 'assets/StarX Vpn Light Mode/Check Circle/Editing Selected Dark.png'
+                            : 'assets/StarX Vpn Light Mode/Check Circle/Editing Unselected Dark.png',
+                        height: 30.h,
+                        width: 30.w,
+                      ),
                     ),
                   );
                 },
