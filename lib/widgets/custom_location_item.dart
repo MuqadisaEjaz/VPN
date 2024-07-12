@@ -69,7 +69,7 @@ class _CustomLocationItemState extends State<CustomLocationItem> {
               if (widget.isPremium)
                 Image.asset(
                   isExpanded
-                      ? 'assets/StarX Vpn Light Mode/lock and unlock icon/square-lock-02.png'
+                      ? 'assets/StarX Vpn Light Mode/lock and unlock icon/unlock.png'
                       : 'assets/StarX Vpn Light Mode/lock and unlock icon/square-lock-02.png',
                   height: 20.h,
                   width: 20.w,

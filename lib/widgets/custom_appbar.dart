@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:starxvpn_lightmode/view/Languages/languages_screen.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String userName;
@@ -40,7 +41,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             width: 40.w,
           ),
           onPressed: () {
-            // Handle settings action
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              builder: (BuildContext context) {
+                return Container(
+                  height: MediaQuery.of(context).size.height *
+                      0.85, // Set the height here
+                  child: LanguagesScreen(),
+                );
+              },
+            );
           },
         ),
       ],

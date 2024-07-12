@@ -97,7 +97,7 @@ class CustomDialog extends StatelessWidget {
                         positiveButtonText,
                         style: TextStyle(
                           color: positiveButtonColor,
-                          fontFamily: 'SatoshiRegular',
+                          fontFamily: 'Satoshi',
                           fontSize: 16.sp,
                         ),
                       )),

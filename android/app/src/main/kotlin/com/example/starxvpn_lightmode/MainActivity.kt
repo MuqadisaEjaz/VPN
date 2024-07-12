@@ -1,4 +1,4 @@
-package com.example.starxvpn_lightmode
+package com.example.starx_vpn
 
 import io.flutter.embedding.android.FlutterActivity
 

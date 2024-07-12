@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:starxvpn_lightmode/providers/myaccount_provider.dart';
+import 'package:starxvpn_lightmode/widgets/custom_dialogbox.dart';
 import 'package:starxvpn_lightmode/widgets/custom_text_fields.dart';
 import 'package:starxvpn_lightmode/widgets/my_button.dart';
 
@@ -97,7 +98,25 @@ class _ChangeUserInfoScreenState extends State<ChangeUserInfoScreen> {
                   width: 150.w,
                   isPrimary: true,
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, '/verification');
+                    //Navigator.pushReplacementNamed(context, '/verification');
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return CustomDialog(
+                          content:
+                              'Are you sure you want to update user information?',
+                          negativeButtonText: 'Cancel',
+                          positiveButtonText: 'Save',
+                          onNegativeTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          onPositiveTap: () {
+                            Navigator.pushReplacementNamed(
+                                context, '/verification');
+                          },
+                        );
+                      },
+                    );
                   },
                 ),
               ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:starxvpn_lightmode/const/app_colors.dart';
+import 'package:starxvpn_lightmode/widgets/custom_dialogbox.dart';
 
 class CustomDrawer extends StatefulWidget {
   @override
@@ -78,7 +79,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   ),
                 ),
                 onTap: () {
-                  // Handle Premium navigation
+                  Navigator.pushReplacementNamed(context, '/premium');
                 },
                 tileColor: AppColor.blueColor,
               ),
@@ -106,7 +107,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 height: 10.h,
                 width: 10.w,
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacementNamed(context, '/protocols');
+              },
             ),
             Divider(),
             _buildDrawerItem(
@@ -202,7 +205,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 width: 10.w,
               ),
               onTap: () {
-                // Handle White List navigation
+                Navigator.pushReplacementNamed(context, '/whitelist');
               },
             ),
             Divider(),
@@ -216,7 +219,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 width: 10.w,
               ),
               onTap: () {
-                // Handle Security & Privacy navigation
+                Navigator.pushReplacementNamed(
+                    context, '/security-and-privacy');
               },
             ),
             Divider(),
@@ -230,7 +234,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 width: 10.w,
               ),
               onTap: () {
-                // Handle Help & Support navigation
+                Navigator.pushReplacementNamed(context, '/help-and-support');
               },
             ),
             Divider(),
@@ -257,7 +261,26 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 width: 10.w,
               ),
               onTap: () {
-                // Handle Sign Out navigation
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return CustomDialog(
+                      title: 'Come back soon!',
+                      content: 'Are you sure you want to Sign Out?',
+                      negativeButtonText: 'Cancel',
+                      negativeButtonColor: AppColor.errorColor,
+                      positiveButtonText: 'Confirm',
+                      positiveButtonColor: AppColor.errorColor,
+                      onNegativeTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      onPositiveTap: () {
+                        //sign out
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                );
               },
             ),
             SizedBox(height: 100.h),

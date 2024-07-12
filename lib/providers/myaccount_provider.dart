@@ -7,6 +7,7 @@ class MyAccountProvider with ChangeNotifier {
   String _myIp = '116.108.85.23';
   String _type = 'Free';
   String _daysLeft = '7 days left';
+  bool _showSuccessMessage = true;
 
   String get fullName => _fullName;
   String get email => _email;
@@ -14,6 +15,7 @@ class MyAccountProvider with ChangeNotifier {
   String get myIp => _myIp;
   String get type => _type;
   String get daysLeft => _daysLeft;
+  bool get showSuccessMessage => _showSuccessMessage;
 
   void updateFullName(String fullName) {
     _fullName = fullName;
@@ -42,6 +44,11 @@ class MyAccountProvider with ChangeNotifier {
 
   void updateDaysLeft(String daysLeft) {
     _daysLeft = daysLeft;
+    notifyListeners();
+  }
+
+  void setShowSuccessMessage(bool value) {
+    _showSuccessMessage = value;
     notifyListeners();
   }
 }

@@ -181,12 +181,6 @@ class _LocationScreenState extends State<LocationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // return ClipRRect(
-    //   borderRadius: BorderRadius.circular(30.0), // Rounded corners
-    //   child: SingleChildScrollView(
-    //     child: Column(
-    //       crossAxisAlignment: CrossAxisAlignment.stretch,
-    //       children: [
     return SingleChildScrollView(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(30.0), // Rounded corners
@@ -222,7 +216,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                   SizedBox(height: 20.h),
-                  // Row with clickable categories
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: categories.asMap().entries.map((entry) {
@@ -300,33 +294,6 @@ class _LocationScreenState extends State<LocationScreen> {
                       borderRadius: BorderRadius.circular(12.0),
                       border: Border.all(color: Colors.grey.shade300),
                     ),
-                    // child: Column(
-                    //   children: locationData[selectedIndex]
-                    //       .asMap()
-                    //       .entries
-                    //       .map((entry) {
-                    //     int index = entry.key;
-                    //     Map<String, dynamic> location = entry.value;
-                    //     return Column(
-                    //       children: [
-                    //         CustomLocationItem(
-                    //           imagePath: location[
-                    //               "imagePath"], // Replace with actual location image path
-                    //           countryName: location["countryName"],
-                    //           cities: location["cities"],
-                    //           captial: location["capital"],
-                    //         ),
-                    //         if (index < locationData[selectedIndex].length - 1)
-                    //           Divider(
-                    //             thickness: 3, // Adjust thickness for boldness
-                    //             height:
-                    //                 5.h, // Adjust height of the divider line
-                    //             color: Color.fromARGB(255, 224, 224,
-                    //                 224), // Optionally set the color
-                    //           ), // Divider between items
-                    //       ],
-                    //     );
-                    //   }).toList(),
                     child: Column(
                       children: locationData[selectedIndex]
                           .asMap()
