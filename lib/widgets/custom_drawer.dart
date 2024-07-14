@@ -247,7 +247,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 width: 10.w,
               ),
               onTap: () {
-                // Handle Help & Support navigation
+                Navigator.pushReplacementNamed(context, '/aboutus');
               },
             ),
             Divider(),

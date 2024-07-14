@@ -19,7 +19,10 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   String ipAddress = '112.456.7569'; // Example IP address
-  String userName = 'Syed Wajahat Hassan'; // Example user name
+  String? userName; //user not signed in
+  //String? userName = 'Syed Wajahat Hassan'; // user signedin
+
+  bool showWorldwideServerBox = true;
 
   @override
   void initState() {
@@ -30,34 +33,25 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Future<void> _checkOnboardingStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool onboardingCompleted = prefs.getBool('onboardingCompleted') ?? false;
+    // userName = prefs.getString('userName');     // Fetch user name from preferences
 
-    if (!onboardingCompleted) {
+    if (userName == null && !onboardingCompleted) {
       await prefs.setBool(
           'onboardingCompleted', true); // Mark onboarding as completed
       Timer(Duration(seconds: 2), () {
-        Navigator.of(context).pushReplacement(_createRoute());
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          builder: (BuildContext context) {
+            return Container(
+              height: MediaQuery.of(context).size.height * 0.95,
+              child: OnboardingScreen.withProvider(),
+            );
+          },
+        );
+        // Navigator.pushReplacementNamed(context, '/onboarding');
       });
     }
-  }
-
-  Route _createRoute() {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) =>
-          OnboardingScreen(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.0, 1.0);
-        const end = Offset.zero;
-        const curve = Curves.ease;
-
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      },
-    );
   }
 
   @override
@@ -71,7 +65,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             children: [
               Column(
                 children: [
-                  CustomAppBar(userName: userName),
+                  CustomAppBar(userName: userName ?? 'Sign Up/Sign In'),
                   Expanded(
                     child: SingleChildScrollView(
                       child: Consumer<DashboardProvider>(

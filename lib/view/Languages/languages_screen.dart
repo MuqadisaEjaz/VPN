@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:starxvpn_lightmode/Models/languages_model.dart';
 import 'package:starxvpn_lightmode/const/app_colors.dart';
 
 class LanguagesScreen extends StatefulWidget {
@@ -8,51 +9,7 @@ class LanguagesScreen extends StatefulWidget {
 }
 
 class _LanguagesScreenState extends State<LanguagesScreen> {
-  // Variable to track the selected language index
   int selectedLanguageIndex = -1;
-
-  final List<Map<String, String>> languages = [
-    {
-      "name": "Spanish",
-      "imagePath":
-          "assets/StarX Vpn Light Mode/Languages Flag Icon/spanish flag.png"
-    },
-    {
-      "name": "French",
-      "imagePath":
-          "assets/StarX Vpn Light Mode/Languages Flag Icon/french flag.png"
-    },
-    {
-      "name": "English",
-      "imagePath": "assets/StarX Vpn Light Mode/Languages Flag Icon/english.png"
-    },
-    {
-      "name": "Japanese",
-      "imagePath":
-          "assets/StarX Vpn Light Mode/Languages Flag Icon/japanese.png"
-    },
-    {
-      "name": "Korean",
-      "imagePath": "assets/StarX Vpn Light Mode/Languages Flag Icon/korean.png"
-    },
-    {
-      "name": "Chinese",
-      "imagePath":
-          "assets/StarX Vpn Light Mode/Languages Flag Icon/chinesse.png"
-    },
-    {
-      "name": "Ukrainian",
-      "imagePath": "assets/StarX Vpn Light Mode/Languages Flag Icon/ukrain.png"
-    },
-    {
-      "name": "German",
-      "imagePath": "assets/StarX Vpn Light Mode/Languages Flag Icon/german.png"
-    },
-    {
-      "name": "Russian",
-      "imagePath": "assets/StarX Vpn Light Mode/Languages Flag Icon/russian.png"
-    },
-  ];
 
   @override
   Widget build(BuildContext context) {

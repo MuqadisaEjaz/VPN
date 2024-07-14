@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:starxvpn_lightmode/providers/newpassword_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:starxvpn_lightmode/widgets/custom_appbar_two.dart';
 import 'package:starxvpn_lightmode/widgets/custom_text_fields.dart';
 import 'package:starxvpn_lightmode/widgets/my_button.dart';
 
@@ -19,23 +20,11 @@ class NewPasswordScreenState extends State<NewPasswordScreen> {
         create: (_) => NewPasswordProvider(),
         child: SafeArea(
             child: Scaffold(
-          appBar: AppBar(
-            leading: IconButton(
-              icon: Image.asset(
-                'assets/StarX Vpn Light Mode/Back Button/Back Button.png',
-                height: 60.h,
-                width: 60.w,
-              ),
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, '/login');
-              },
-            ),
-            title: Text(
-              'Reset Password',
-              style: TextStyle(fontFamily: 'Satoshi', fontSize: 20),
-            ),
-            backgroundColor: Colors.transparent,
-            elevation: 0,
+          appBar: CustomAppBarTwo(
+            title: 'Rest Password',
+            onBackPressed: () {
+              Navigator.pushReplacementNamed(context, '/login');
+            },
           ),
           body: SingleChildScrollView(
             child: Container(

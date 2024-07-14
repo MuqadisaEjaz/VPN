@@ -1,31 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:starxvpn_lightmode/widgets/custom_appbar_two.dart';
 
 class SecurityAndPrivacyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Security & Privacy',
-          style: TextStyle(
-            fontFamily: 'SatoshiMedium',
-            fontSize: 18.sp,
-          ),
-        ),
-        centerTitle: true,
-        elevation: 0,
-        leading: IconButton(
-          icon: Image.asset(
-            'assets/StarX Vpn Light Mode/Back Button/Back Button.png',
-            height: 40.h,
-            width: 40.w,
-          ),
-          onPressed: () {
-            Navigator.pushReplacementNamed(context, '/dashboard');
-            // Navigator.of(context).pop();
-          },
-        ),
+      appBar: CustomAppBarTwo(
+        title: 'Security & Privacy',
+        onBackPressed: () {
+          Navigator.pushReplacementNamed(context, '/dashboard');
+        },
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.w),

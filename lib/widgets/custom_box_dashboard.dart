@@ -57,14 +57,14 @@ class CustomBox extends StatelessWidget {
                     fontFamily: 'Satoshi',
                     fontSize: 16.sp,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 SizedBox(height: 5.h),
                 Text(
                   location,
                   style: TextStyle(
-                    fontFamily: 'Satoshi',
+                    fontFamily: 'SatoshiRegular',
                     fontSize: 14.sp,
                   ),
                 ),

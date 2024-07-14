@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:starxvpn_lightmode/view/Languages/languages_screen.dart';
+import 'package:starxvpn_lightmode/view/Onboarding/onboarding_screen.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String userName;
@@ -46,8 +47,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               isScrollControlled: true,
               builder: (BuildContext context) {
                 return Container(
-                  height: MediaQuery.of(context).size.height *
-                      0.85, // Set the height here
+                  height: MediaQuery.of(context).size.height * 0.85,
                   child: LanguagesScreen(),
                 );
               },
@@ -55,26 +55,48 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           },
         ),
       ],
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Welcome',
-            style: TextStyle(
-              color: Colors.grey,
-              fontFamily: 'Satoshi',
-              fontSize: 16.sp,
+      title: GestureDetector(
+        onTap: () {
+          if (userName == 'Sign Up/Sign In') {
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              builder: (BuildContext context) {
+                return Container(
+                  height: MediaQuery.of(context).size.height * 0.95,
+                  child: OnboardingScreen.withProvider(),
+                );
+              },
+            );
+            //  Navigator.pushReplacementNamed(context, '/onboarding');
+          }
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (userName != 'Sign Up/Sign In')
+              Text(
+                'Welcome',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontFamily: 'Satoshi',
+                  fontSize: 16.sp,
+                ),
+              ),
+            Text(
+              userName,
+              style: TextStyle(
+                fontFamily: userName == 'Sign Up/Sign In'
+                    ? 'SatoshiRegular'
+                    : 'Satoshi',
+                fontSize: 16.sp,
+                fontWeight: userName == 'Sign Up/Sign In'
+                    ? FontWeight.normal
+                    : FontWeight.w700,
+              ),
             ),
-          ),
-          Text(
-            userName,
-            style: TextStyle(
-              fontFamily: 'Satoshi',
-              fontSize: 16.sp,
-              fontWeight: FontWeight.bold, // Medium weight
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
       backgroundColor: Colors.transparent,
       elevation: 0,

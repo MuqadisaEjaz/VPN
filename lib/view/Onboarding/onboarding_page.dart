@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:starxvpn_lightmode/themes/custome_text_style.dart';
 
 class OnboardingPage extends StatelessWidget {
   final String imagePath;
   final String text;
-  //final String swipeImagePath;
 
   OnboardingPage({
     required this.imagePath,
     required this.text,
-    // required this.swipeImagePath,
   });
 
   @override
@@ -23,7 +20,7 @@ class OnboardingPage extends StatelessWidget {
           child: Text(
             text,
             textAlign: TextAlign.center,
-            style: CustomTextStyle.onboardingText.copyWith(
+            style: TextStyle(
               fontFamily: 'Satoshi',
               fontSize: 18.sp,
               fontWeight: FontWeight.bold,
@@ -35,16 +32,8 @@ class OnboardingPage extends StatelessWidget {
           imagePath,
           height: 200.h,
           width: 200.w,
-          fit: BoxFit.contain, // Ensure the image fits within the container
+          fit: BoxFit.contain,
         ),
-        SizedBox(height: 30.h),
-        // Image.asset(
-        //   swipeImagePath,
-        //   height: 28.h,
-        //   width: 42.w,
-        //   fit: BoxFit.contain, // Ensure the image fits within the container
-        // ),
-
         SizedBox(height: 30.h),
       ],
     );

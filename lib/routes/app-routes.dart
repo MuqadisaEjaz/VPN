@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starxvpn_lightmode/view/Aboutus/aboutus_screen.dart';
 import 'package:starxvpn_lightmode/view/FreeLocation/location_screen.dart';
 import 'package:starxvpn_lightmode/view/HelpAndSupport/helpandsupport_screen.dart';
 import 'package:starxvpn_lightmode/view/Login/login_screen.dart';
@@ -57,6 +58,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => SecurityAndPrivacyScreen());
       case '/help-and-support':
         return MaterialPageRoute(builder: (_) => HelpSupportScreen());
+      case '/aboutus':
+        return MaterialPageRoute(builder: (_) => AboutUsScreen());
 
       default:
         return MaterialPageRoute(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:starxvpn_lightmode/const/app_colors.dart';
 import 'package:starxvpn_lightmode/providers/myaccount_provider.dart';
+import 'package:starxvpn_lightmode/widgets/custom_appbar_two.dart';
 import 'package:starxvpn_lightmode/widgets/custom_messagebar.dart';
 
 class AccountInfoScreen extends StatefulWidget {
@@ -16,6 +16,7 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
     fontSize: 14,
     fontWeight: FontWeight.w400,
   );
+
   @override
   Widget build(BuildContext context) {
     final bool showMessageBar = true;
@@ -28,24 +29,11 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppBar(
-                  leading: IconButton(
-                    icon: Image.asset(
-                      'assets/StarX Vpn Light Mode/Back Button/Back Button.png',
-                      height: 60.h,
-                      width: 60.w,
-                    ),
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/dashboard');
-                    },
-                  ),
-                  title: Text(
-                    "My Account",
-                    style: TextStyle(fontFamily: 'Satoshi', fontSize: 20),
-                  ),
-                  centerTitle: true,
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
+                CustomAppBarTwo(
+                  title: 'My Account',
+                  onBackPressed: () {
+                    Navigator.pushReplacementNamed(context, '/dashboard');
+                  },
                 ),
                 Expanded(
                   child: Padding(

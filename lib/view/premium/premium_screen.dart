@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:starxvpn_lightmode/const/app_colors.dart';
+import 'package:starxvpn_lightmode/widgets/custom_appbar_two.dart';
 import 'package:starxvpn_lightmode/widgets/my_button.dart';
 
 class PremiumScreen extends StatefulWidget {
@@ -14,7 +15,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
   void onBoxSelected(int index) {
     setState(() {
       if (selectedBoxIndex == index) {
-        selectedBoxIndex = -1; // Deselect the box if it is already selected
+        selectedBoxIndex = -1;
       } else {
         selectedBoxIndex = index;
       }
@@ -24,26 +25,11 @@ class _PremiumScreenState extends State<PremiumScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Premium',
-          style: TextStyle(
-            fontFamily: 'SatoshiMedium',
-            fontSize: 18.sp,
-          ),
-        ),
-        centerTitle: true,
-        elevation: 0,
-        leading: IconButton(
-          icon: Image.asset(
-            'assets/StarX Vpn Light Mode/Back Button/Back Button.png',
-            height: 40.h,
-            width: 40.w,
-          ),
-          onPressed: () {
-            Navigator.pushReplacementNamed(context, '/dashboard');
-          },
-        ),
+      appBar: CustomAppBarTwo(
+        title: 'Premium',
+        onBackPressed: () {
+          Navigator.pushReplacementNamed(context, '/dashboard');
+        },
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0.w),

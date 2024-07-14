@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:starxvpn_lightmode/const/app_colors.dart';
+import 'package:starxvpn_lightmode/widgets/custom_appbar_two.dart';
 
 class ProtocolScreen extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _ProtocolScreenState extends State<ProtocolScreen> {
   void onItemSelected(int index) {
     setState(() {
       if (selectedIndex == index) {
-        selectedIndex = -1; // Deselect if the same item is clicked again
+        selectedIndex = -1;
       } else {
         selectedIndex = index;
       }
@@ -23,26 +24,11 @@ class _ProtocolScreenState extends State<ProtocolScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Protocols',
-          style: TextStyle(
-            fontFamily: 'SatoshiMedium',
-            fontSize: 18.sp,
-          ),
-        ),
-        centerTitle: true,
-        elevation: 0,
-        leading: IconButton(
-          icon: Image.asset(
-            'assets/StarX Vpn Light Mode/Back Button/Back Button.png',
-            height: 40.h,
-            width: 40.w,
-          ),
-          onPressed: () {
-            Navigator.pushReplacementNamed(context, '/dashboard');
-          },
-        ),
+      appBar: CustomAppBarTwo(
+        title: 'Protocols',
+        onBackPressed: () {
+          Navigator.pushReplacementNamed(context, '/dashboard');
+        },
       ),
       body: ListView.separated(
         itemCount: protocolItems.length,
